@@ -1,0 +1,184 @@
+@use 'fontStyle';
+@use 'button';
+@use 'gfx';
+@use 'responsive';
+// Mixin for flex, direction
+// Mixin for other repetitions
+// Set Favicon
+body {
+  overflow-x: hidden; // Not ideal but it hides offscreen items
+  // Above
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #131313;
+  // font-family: "Spectral", serif;
+  // font-family: "Rokkitt", serif;
+  // font-family: "Roboto", sans-serif;
+  font-family: "Chivo", sans-serif;
+}
+
+// Header
+.navBar__Top {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  // Allows for custom height header
+  height: 100%;
+  max-height: 60px;
+  // justify-content: space-evenly;
+  // May use a "cushion" to the right of midLinks
+  .navBar__titleLeft {
+    // This one could be absolute/relative as it doesn't really need to be responsive
+    // Or the current solution where its height is capped at 60px
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    // height: auto;
+    // OR
+    height: 60px;
+    width: auto;
+    flex-grow: 1; // HERE
+    // max-width: 250px;
+    .logoBG {
+      @include gfx.logoBackground();
+    }
+    a {
+      // Uppercase?
+      font-family: "Rokkitt", serif;
+      margin: 0px 0px 0px 15px;
+      line-height: normal;
+      font-size: 32px;
+    }
+  }
+  .navBar__linksMid {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    // Auto necessary? - isn't it default
+    height: auto;
+    width: auto;
+    max-width: 500px; // Use flex basis and shrink
+    //margin-right: 5vw;
+    flex-grow: 5; //Here
+    //margin-left: 20px;
+    li {
+      a {
+        text-transform: uppercase;
+        outline: none;
+      }
+      a:hover {
+        @include gfx.fontFade();
+      }
+      margin: 5px 10px 0px 0px;
+    }
+  }
+  .buffer {
+    // Acts like a "cushion" i suppose
+    height: 100%;
+    flex-grow: 0.75;
+  }
+  .btnDiv__right {
+    // Hitbox is a bit big
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include button.btn();
+    // Removes overflow
+    margin-top: 12px;
+    margin-right: 20px; // 5px
+  }
+}
+
+// Navbar in side mode animation. Mixin can't take child as variable
+.navBar__Top #midLinks.responsive > :nth-child(1) {
+  @include gfx.slideTop(0s);
+}
+.navBar__Top #midLinks.responsive > :nth-child(2) {
+  @include gfx.slideTop(0.15s);
+}
+.navBar__Top #midLinks.responsive > :nth-child(3) {
+  @include gfx.slideTop(0.3s);
+}
+.navBar__Top #midLinks.responsive > :nth-child(4) {
+  @include gfx.slideTop(0.45s);
+}
+
+// FIX the navlinks spacing and response/interaction
+
+#shape.slideIn {
+  position: unset;
+  visibility: visible;
+  transition-duration: 1s;
+  //transition-timing-function: ease;
+  transform: translateX(calc(-50vw + 37.5vw)); // + half width of object
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  .testSlide {
+    //border: solid #fff 1px;   // Maybe just a 1px border on the right side
+    display: flex;
+    flex-flow: row nowrap;
+    position: absolute;
+    justify-content: space-between;
+    align-items: center;
+    //visibility: hidden; // Not exactly necessary as it's off-screen
+    align-self: flex-end;
+    width: 75vw;
+    height: 25vw;
+    transform: translateX(75vw);
+    //background-color: #fff;
+    max-height: 250px;
+    max-width: 750px;
+
+    .leonImg {
+      height: 87.5%;
+      width: 30%;
+      background-image: url("../img/leon-crop.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    .aboutTxt {
+      margin-left: 10px;
+      height: 100%;
+      width: 70%;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-evenly;
+      h1 {
+        //color: #000;
+        font-family: "Rokkitt", serif;
+        line-height: normal;
+        font-size: 32px;
+      }
+      p {
+        //word-break: break-all;
+        word-wrap: break-word;
+        white-space: normal;
+        //color: #000;
+        a {
+          text-decoration: underline;
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
+// H2 is default white? Check and fix this
+// why is text not wrapping by default
+// Current set up is slide in. Decide on this
+// Write mixin for the slide in.
+// Width variable so it can auto work out the distance to move

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!--Would rather have all in one file but responsive needs to be the last imported file -->
+    <!--<link rel="stylesheet" href="css/responsive.css">-->
+    <title>Home - Leon Jardevall</title>
+</head>
+
+<body>
+    <script src="js/script.js"></script>
+    <header class="navBar__Top" id="navigation">
+        <div class="navBar__titleLeft">
+            <div class="logoBG"></div>
+            <a href="index.html">Leon Jardevall.</a>
+        </div>
+        <ul class="navBar__linksMid" id="midLinks">
+            <li><a href="#">Project</a></li>
+            <li><a onclick="about()" href="#">About Me</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Review</a></li>
+        </ul>
+        <div class="buffer"></div>
+        <div class="btnDiv__right" id="btnContainer">
+            <div class="btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="testSlide" id="shape">
+            <div class="leonImg">
+            </div>
+            <div class="aboutTxt">
+                <h1>About me</h1>
+                <p>
+                    Hi, I’m Leon. I’m 20 years old, Swedish, and now reside in Sweden after having lived in the UK for
+                    10
+                    years. I completed both primary and secondary school there, and then studied front-end + React for 6
+                    months at Sundsgården Folkhögskola. I’m really driven, and I like to learn and build projects
+                    outside of
+                    school. In my spare time I’ve taught myself 3D modelling, 3D-Printing, Arduino/embedded and
+                    electronics,
+                    and have written some light C/C++ ASCII graphics games. I have some experience hosting LAMP stack
+                    webservers but I’m primarily front-end. Some of these projects can be found on my <a target="_blank"
+                        rel="noopener noreferrer" href="https://github.com/Hypergolix?tab=repositories">GitHub</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
